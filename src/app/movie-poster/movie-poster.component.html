@@ -1,0 +1,7 @@
+<section class="movie-poster"  [class.movie-poster--active]="isSelected" (click)="clickMoviePoster($event, movie)">
+  <section class="movie-poster__rotator">
+    <div class="movie-poster--front">
+      <img class="movie-poster__photo" [src]="'https://image.tmdb.org/t/p//w300/'+movie.poster_path" />
+    </div>
+  </section>
+</section>
