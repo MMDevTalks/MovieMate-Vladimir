@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { MOVIES } from './mocks';
+import { Component, OnInit } from '@angular/core';
 import { MovieService } from './core/movie.service';
-import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/do';
 
 @Component({
   selector: 'app-root',
@@ -9,20 +9,19 @@ import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  movies = [];
-  selectedMovie: any = null;
+  public movies$: Observable<Array<any>>;
+  public selectedMovie: any;
+  public movieDetails: any;
 
-  constructor(private _movieService: MovieService) {
-    
-  }
+  constructor(private _movieService: MovieService) { }
 
   selectMovie(movie) {
     this.selectedMovie = movie;
   }
-
+  showMovieDetails(movie) {
+    this.movieDetails = movie;
+  }
   ngOnInit() {
-    this._movieService.getMovies().subscribe(data=> {
-      this.movies = data;
-    })
+    this.movies$ = this._movieService.getMovies();
   }
 }
