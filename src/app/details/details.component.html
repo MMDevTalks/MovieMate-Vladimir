@@ -1,3 +1,14 @@
-<p>
-  details works!
-</p>
+<article class="details">
+  <app-icon class="details__close-button" name="close"  (click)="closeSelf()"></app-icon>
+  <!-- <div class="details__navigation">
+      <a class="details__navigation-item">Similar</a>
+      <a class="details__navigation-item">Recommended</a>
+  </div> -->
+  <div (click)="$event.stopPropagation()"> 
+      <div class="details__title">{{(movie$|async)?.title}}</div>
+      <div class="details__cover" #movieCover></div>
+      <img class="details__image large" (extractColors)="morphBackground($event)" crossOrigin="Anonymous" mmColorExtractor [src]="'https://image.tmdb.org/t/p//w300/'+(movie$|async)?.posterPath">
+      <div class="details__description">{{(movie$|async)?.overview}}</div>
+  </div>
+</article>
+<!-- <app-spinner class="big" *ngIf="loading"></app-spinner> -->
