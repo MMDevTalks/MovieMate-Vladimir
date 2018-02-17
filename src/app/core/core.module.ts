@@ -5,6 +5,7 @@ import { HeaderComponent } from './header/header.component';
 import { SearchComponent } from './search/search.component';
 import { SvgDefinitionsComponent } from './svg-definitions/svg-definitions.component';
 import { MovieService } from './movie.service';
+import { GuardsComponent } from './guards/guards.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { MovieService } from './movie.service';
   declarations: [
     HeaderComponent,
     SearchComponent,
-    SvgDefinitionsComponent
+    SvgDefinitionsComponent,
+    GuardsComponent
   ],
   exports: [
     HeaderComponent,
